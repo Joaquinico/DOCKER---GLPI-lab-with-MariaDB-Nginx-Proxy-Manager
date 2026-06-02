@@ -1,9 +1,8 @@
-🚀 Laboratorio de GLPI en Docker con MariaDB y Nginx Proxy Manager
+Laboratorio de GLPI en Docker con MariaDB y Nginx Proxy Manager
 ¡Bienvenido! Este repositorio contiene una plantilla lista para desplegar un entorno de laboratorio completo de GLPI (v11), respaldado por una base de datos MariaDB y protegido por el proxy inverso Nginx Proxy Manager (NPM).
 
 Esta arquitectura emula un entorno de producción, aislando los contenedores y centralizando todo el tráfico web a través de los puertos estándar (80 y 443).
-
-🛠️ Requisitos Previos
+Requisitos Previos
 Antes de comenzar, asegúrate de tener instalado en tu equipo:
 
 	Linux: Docker y Docker Compose.
@@ -11,8 +10,10 @@ Antes de comenzar, asegúrate de tener instalado en tu equipo:
 	Windows / macOS: Docker Desktop iniciado.
 
 Clona el repositorio y entra a la carpeta:
-git clone https://github.com/tu-usuario/tu-repo.git
-cd tu-repo
+git clone https://github.com/Joaquinico/DOCKER---GLPI-lab-with-MariaDB-Nginx-Proxy-Manager.git
+
+cd DOCKER---GLPI-lab-with-MariaDB-Nginx-Proxy-Manager.git
+
 
 Método 1: Despliegue Automatizado usando el script init.sh:
 Si estás en Linux, macOS o usas Git Bash / WSL en Windows, puedes desplegar todo el laboratorio con un solo comando. 
