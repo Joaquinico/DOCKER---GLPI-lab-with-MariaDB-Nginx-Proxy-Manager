@@ -1,0 +1,56 @@
+version: "3.8" # definir la versión del compose
+
+services:
+  # Servicio de Base de Datos
+  contenedor_mariadb:
+    image: mariadb:latest
+    container_name: mariadb-glpi-lab
+    environment:
+      - MYSQL_ROOT_PASSWORD=yes 
+      - MYSQL_DATABASE=${DB_NAME}
+      - MYSQL_USER=${DB_USER}
+      - MYSQL_PASSWORD=${DB_PASSWORD}
+    volumes:
+      - db_data:/var/lib/mysql
+    networks:
+      - glpi_network
+    restart: always
+
+  # Servicio de GLPI
+  contenedor_glpi:
+    image: glpi/glpi:latest
+    container_name: glpi-web-lab
+    depends_on:
+      - contenedor_mariadb
+    #ports:
+      #- "8080:80"
+    env_file: 
+      - .env 
+    volumes:
+      - glpi_data:/var/glpi/ # Nota: Asegúrate de que la imagen 'glpi/glpi' use esta ruta exacta para persistir datos
+    networks:
+      - glpi_network
+    restart: always
+
+  # Proxy Inverso y Gestor de SSL
+  contenedor_nginx-proxy:
+    image: 'jc21/nginx-proxy-manager:latest'
+    container_name: nginx-proxy-lab
+    ports:
+      - '80:80'   # Trafico HTTP publico
+      - '443:443' # Trafico HTTPS publico
+      - '81:81'   # Panel de administracion web de NPM
+    volumes:
+      - ./npm-data:/data
+      - ./npm-letsencrypt:/etc/letsencrypt
+    networks:
+      - glpi_network
+    restart: always
+
+networks:
+  glpi_network:
+    driver: bridge
+
+volumes:
+  db_data:
+  glpi_data:
