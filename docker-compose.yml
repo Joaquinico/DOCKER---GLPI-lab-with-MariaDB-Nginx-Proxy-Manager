@@ -1,4 +1,3 @@
-version: "3.8" # definir la versión del compose
 
 services:
   # Servicio de Base de Datos
