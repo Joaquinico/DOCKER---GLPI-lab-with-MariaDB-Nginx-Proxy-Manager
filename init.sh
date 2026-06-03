@@ -66,7 +66,7 @@ if [ $? -eq 0 ]; then
     echo -e "${YELLOW}====================================================${NC}"
     echo -e "${GREEN}🎉 ¡Despliegue completado con éxito!${NC}"
     echo -e "${YELLOW}====================================================${NC}"
-    echo -e "👉 Accede a GLPI desde tu navegador: ${GREEN}http://localhost:8080${NC}"
+    echo -e "👉 Accede a Nginx Proxy Manager desde tu navegador: ${GREEN}http://localhost:81${NC}"
     echo -e "📝 Puedes revisar las credenciales generadas en el archivo ${YELLOW}.env${NC}"
     echo -e "🔐 Credenciales por defecto de GLPI: Usuario: ${YELLOW}glpi${NC} | Contraseña: ${YELLOW}glpi${NC}"
 else
